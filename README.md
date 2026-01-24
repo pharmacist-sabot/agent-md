@@ -1,138 +1,82 @@
+# 🤖 AGENT.md Protocol: Central Command
+
+> **The Operating System for Autonomous AI Agents.**
+> A collection of immutable contracts, architectural constraints, and phase-aware protocols for software development.
+
+![Status](https://img.shields.io/badge/Status-Active-success)
+![Agents](https://img.shields.io/badge/Total_Projects-8-blue)
+![Standard](https://img.shields.io/badge/Protocol-v2.0-orange)
+
+---
+
+## 🧭 Navigation & Project Registry
+
+| Project / Domain | Tech Stack | Status Overview | Context |
+| :--- | :--- | :--- | :--- |
+| **[🌿 herbs-app](./herbs-app/)** | Vue 3, Pinia, Google Sheets API | 🟡 In Progress | Performance optimization & E2E Testing |
+| **[💊 high-alert-drugs-app](./high-alert-drugs-app/)** | Vue 3, Supabase | 🔴 High Priority | Migration to TypeScript & Pinia |
+| **[🩸 warfarin-app](./warfarin-app/)** | Rust (WASM), Vue 3 | 🟢 Stable | Logic Safety, PWA & Unit Tests |
+| **[📊 medsup-dash](./medsup-dash/)** | Vue 3, Tailwind, Chart.js | 🟡 In Progress | Dashboard Logic & Error Handling |
+| **[🏥 pharmacy-hub-sabot](./pharmacy-hub-sabot/)** | Vue 3, Firebase Hosting | 🟢 Stable | PWA, Security & Data Layer |
+| **[🦀 rust-roadmap](./rust-roadmap/)** | Rust, Leptos, SVG | 🛠️ Construction | Architectural backbone & Content |
+| **[📝 rxdevnotes](./rxdevnotes/)** | Astro, TypeScript | 🟡 In Progress | Content Structure & Features |
+| **[🛠️ Porting & Migration](./porting/)** | Cross-Framework | 📚 Library | Reference contracts for migration |
+
+---
+
+## 🚦 Naming Convention & Workflow
+
+Files in this repository follow a strict naming convention to denote **Order of Execution** and **Current Status**.
+
+**Format:** `[Sequence]-[Status]-[Slug].md`
+
+### 1. Sequence (00-99)
+Indicates the logical dependency. **Agents must process lower numbers first.**
+*   `01`: Foundation / Infrastructure / Types
+*   `05`: Logic / Features
+*   `09`: Testing / CI-CD
+
+### 2. Status Tags
+| Tag | Meaning | Action Required |
+| :--- | :--- | :--- |
+| **`TODO`** | Pending | Ready to be executed by an AI Agent. |
+| **`WIP`** | Work In Progress | Currently being implemented; may contain partial context. |
+| **`DONE`** | Completed | Archived context. Use for reference/context only. |
+| **`SKIP`** | Deprecated | Do not process. |
+
+### 3. Usage (The Bootstrap Prompt)
+To activate an agent for a specific task, copy the content of the target `.md` file and prepend this instruction:
+
+> **SYSTEM PROMPT:**
+> "You are an autonomous developer agent. Read the attached `AGENT.md` file. This file is a **BINDING CONTRACT**. You must strictly follow the constraints, stack, and phase-aware workflow defined within. Do not deviate. Confirm your understanding of the **Primary Objective** before generating code."
+
+---
+
+## 🏗️ The Protocol Standard (Anatomy of an Agent)
+
+Every `AGENT.md` file in this repository strictly adheres to the following structure:
+
+1.  **Context & Role:** Defines *who* the AI is (e.g., "Senior Rust Architect").
+2.  **Immutable Constraints:** Facts that cannot be changed (e.g., "Use Vue 3 Composition API").
+3.  **Phase-Aware Workflow:** Steps that must be done in order (Analysis -> Approval -> Code).
+4.  **Negative Constraints:** What is explicitly *forbidden* (e.g., "No jQuery", "No `any` type").
+5.  **Quality Gates:** Tests/Linters that must pass for the task to be considered "Done".
+
+---
+
+## 🤝 Contributing & Extension
+
+To add a new project:
+1.  Create a folder named after the project `kebab-case`.
+2.  Add a `README.md` inside that folder describing the project stack.
+3.  Create agent files starting with `01-TODO-...`.
+
+To add a new Task to an existing project:
+1.  Check the highest existing sequence number.
+2.  Create `[Next_Number]-TODO-[task-name].md`.
+
+---
+
 <div align="center">
-
-  # AGENT.md Protocol
-
-**The Operating System for Autonomous AI Agents.**
-
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Status](https://img.shields.io/badge/status-active-success.svg)
-![Standard](https://img.shields.io/badge/standard-agent--md-orange.svg)
-
----
-</div>
-
-## 🧠 Abstract
-
-As LLMs evolve from "chat bots" to "agentic workers," the primary bottleneck becomes **control**. Simple prompts result in non-deterministic behavior, architectural drift, and "hallucinated" best practices.
-
-This repository defines **`AGENT.md`**: a standardized, contract-driven protocol that transforms AI agents (ChatGPT, Claude, Cursor, Copilot) into **deterministic, phase-aware, and constraint-bound** workers.
-
-An `AGENT.md` file is not documentation; it is a **binding contract** between the human architect and the machine executor.
-
----
-
-## 🏛️ Core Principles
-
-### 1. Immutable Context
-Defines "Source of Truth" facts (tech stack, environment variables, framework versions) that the AI is forbidden from hallucinating or overriding.
-
-### 2. Phase-Aware State Machines
-Agents are forced to operate in explicit states (e.g., `Analysis` → `Approval` → `Execution`). This prevents "jumping the gun" and writing code before understanding the system.
-
-### 3. Negative Constraints
-Explicitly defines what is **NOT** allowed (e.g., "No refactoring during migration," "No `any` types," "No CDN links"). This is often more important than defining what *is* allowed.
-
-### 4. Quality Gates
-Hard enforcement of tooling standards (Clippy, Rustfmt, ESLint, Prettier) directly within the prompt, ensuring the code passes CI/CD before it is even written.
-
----
-
-## 📚 The Contract Library
-
-This repository contains production-ready contracts for various scenarios. Copy the relevant `.md` file to your project root to activate the agent persona.
-
-### 🛠️ Porting & Migration
-**Location:** `porting/`
-
-Strict contracts for translating codebases between languages or frameworks with zero behavioral changes.
-
-| Contract | Target | Key Constraints |
-| :--- | :--- | :--- |
-| **[vue-js-to-ts.md](porting/vue-js-to-ts.md)** | Vue 3 (JS → TS) | Phase-locked execution. `strict: true` enforced. Zero refactoring allowed. |
-
-### ⚙️ Systems & Rust
-**Location:** `rust-roadmap/`
-
-Contracts designed for high-performance, type-safe environments where correctness and compile-time guarantees are paramount.
-
-| Contract | Domain | Focus |
-| :--- | :--- | :--- |
-| **[backbone-project.md](rust-roadmap/backbone-project.md)** | Data Modeling | Strict data structure definitions, canonical sequencing, file-system organization. |
-| **[rust-css.md](rust-roadmap/rust-css.md)** | Styling | "Rust-first" CSS. No CDNs. Deterministic builds via Trunk/Lightning CSS. |
-| **[rust-roadmap.md](rust-roadmap/rust-roadmap.md)** | Core Architecture | Leptos/SVG focus. Clippy/Rustfmt as hard gates. Explicit > Implicit. |
-
-### 🌐 Web Application (Astro)
-**Location:** `rxdevnotes/`
-
-Granular contracts for implementing specific features or maintaining content-heavy sites.
-
-| Contract | Task | Strategy |
-| :--- | :--- | :--- |
-| **[refactor-blog-contents-structure.md](rxdevnotes/refactor-blog-contents-structure.md)** | Refactoring | Directory-based (Page Bundle) migration. Safe history preservation (`git mv`). |
-| **[related-post.md](rxdevnotes/related-post.md)** | Feature Implementation | Algorithm-based scoring for content recommendations. Reuse over duplication. |
-| **[social-share-component.md](rxdevnotes/social-share-component.md)** | Feature Implementation | Native API usage over 3rd party libs. Accessibility focused. |
-
----
-
-## 🚀 Quickstart
-
-### 1. Installation
-Identify the contract that matches your project's needs and copy it to your root directory.
-
-```bash
-# Example: Migrating a Vue project to TypeScript
-cp porting/vue-js-to-ts.md ./AGENT.md
-```
-
-### 2. Activation
-When initializing an AI session (Composer, ChatGPT, Claude Projects), provide the context immediately:
-
-> **System Prompt:**
-> "Read the `AGENT.md` file in the root directory. Adopt the persona, constraints, and workflow defined therein. Do not proceed until you acknowledge your current phase."
-
-### 3. Enforcement (The Hard Stop)
-If the agent drifts—skipping analysis or violating the contract—redirect it instantly:
-
-> **Correction:**
-> "You are violating Section [X] of AGENT.md. Revert to Phase [Y]. Await further instructions."
-
----
-
-## 🏗️ Anatomy of a Contract
-
-A high-quality `AGENT.md` follows this structure:
-
-1.  **MANDATORY NOTICE:** Explicit warning that compliance is required for correctness.
-2.  **PROJECT CONTEXT:** Immutable facts (Framework, Build Tool, Runtime).
-3.  **PRIMARY OBJECTIVE:** The single non-negotiable goal.
-4.  **PHASE-AWARE WORKFLOW:** A state machine table (e.g., Phase 0: Sanity, Phase 1: Analysis).
-5.  **GLOBAL RULES:** Linting rules, typing strictness, and forbidden patterns.
-6.  **HARD STOP CONDITIONS:** Criteria for immediate termination (e.g., missing dependencies).
-
----
-
-## 🤝 Contributing
-
-We accept contracts for any stack. The standard for submission is high. Contracts must be:
-
-*   **Deterministic:** No "use your best judgment" clauses. Be explicit.
-*   **Testable:** Rules should be verifiable by linters or compilers.
-*   **Scenario-Specific:** Generic prompts are rejected; specific operational contracts are accepted.
-
-To contribute:
-1.  Fork the repository.
-2.  Create your contract in `examples/` or the relevant directory.
-3.  Ensure it strictly follows the **Anatomy** defined above.
-4.  Submit a PR.
-
----
-
-## 📜 License
-
-Distributed under the MIT License.
-
----
-
-<p align="center">
   <i>"Control the Agent, Control the Code."</i>
-</p>
+</div>
